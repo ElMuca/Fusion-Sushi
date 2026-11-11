@@ -1,0 +1,7 @@
+import { useState,useEffect } from 'react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { Logo } from './Shared';
+import { whatsappUrl } from '../data/site';
+import { useScrolled } from '../hooks/useScrolled';
+const links=[['Inicio','#inicio'],['Nosotros','#nosotros'],['Carta','#carta'],['Galería','#galeria'],['Ubicación','#ubicacion']];
+export default function Navbar(){const [open,setOpen]=useState(false),scrolled=useScrolled();useEffect(()=>{const close=()=>setOpen(false);window.addEventListener('resize',close);return()=>window.removeEventListener('resize',close)},[]);return <header className={`navbar ${scrolled||open?'scrolled':''}`}><div className="container nav-inner"><Logo/><nav className="nav-desktop" aria-label="Navegación principal">{links.map(([name,href])=><a href={href} key={href}>{name}</a>)}</nav><a className="nav-cta" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">PEDIR AHORA <ArrowUpRight size={17}/></a><button className="menu-toggle" aria-label={open?'Cerrar menú':'Abrir menú'} aria-expanded={open} aria-controls="mobile-navigation" onClick={()=>setOpen(v=>!v)}>{open?<X/>:<Menu/>}</button></div><nav id="mobile-navigation" className={`mobile-nav ${open?'open':''}`} aria-label="Navegación móvil">{links.map(([name,href])=><a href={href} key={href} onClick={()=>setOpen(false)}>{name}</a>)}<a href={whatsappUrl()} target="_blank" rel="noopener noreferrer" onClick={()=>setOpen(false)}>Pedir por WhatsApp ↗</a></nav></header>}

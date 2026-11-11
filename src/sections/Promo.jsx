@@ -1,0 +1,3 @@
+import { ArrowUpRight } from 'lucide-react';
+import { Reveal,WhatsAppButton } from '../components/Shared';
+export default function Promo(){return <section className="promo"><div className="container promo-inner"><Reveal><span className="promo-kicker">TU PRÓXIMO ANTOJO EMPIEZA AQUÍ</span><h2>¿ANTOJO<br/>DE <i>SUSHI?</i></h2><p>Tu próximo roll favorito está a un mensaje de distancia.</p><WhatsAppButton className="btn-promo">HAZ TU PEDIDO AHORA</WhatsAppButton></Reveal><span className="promo-kanji" aria-hidden="true">寿司</span><ArrowUpRight className="promo-corner" size={110} strokeWidth={.6}/></div></section>}
